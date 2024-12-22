@@ -201,13 +201,11 @@ void upd_PWM(void) {
         cum_err = cum_err_max;
     }
     
-    if ((cur_PWM + K_p*err + K_i*cum_err) < 0) { // Fix this to not need double calculation
+    cur_PWM += K_p*err + K_i*cum_err;
+    if (cur_PWM < 0) {
         cur_PWM = 0;
-    } else {
-        cur_PWM += K_p*err + K_i*cum_err; // Set new PWM
-    }
-    
-    if (cur_PWM > PWM_max) {
+    } 
+    else if (cur_PWM > PWM_max) {
         cur_PWM = PWM_max;
     }
     
