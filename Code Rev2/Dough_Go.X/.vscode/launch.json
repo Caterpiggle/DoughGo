@@ -1,0 +1,18 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Dough_Go: default",
+            "type": "mplab-core-da",
+            "request": "launch",
+            "device": "PIC16F18344",
+            "program": "${workspaceFolder}\\out\\Dough_Go\\default.elf",
+            "tool": "${command:pickTool}",
+            "stopOnEntry": false,
+            "preLaunchTask": "Dough_Go: default - Full Build"
+        }
+    ]
+}

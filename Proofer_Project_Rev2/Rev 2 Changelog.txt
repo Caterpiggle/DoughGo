@@ -1,0 +1,17 @@
+x	Fix U4 footprint
+x	Add LED digit outputs to shift register U2
+x	Fix common cathode BJTs
+x	Add ICSP
+x	Switch MIC4606 PWM input pullups to pulldowns
+x	Update power connector footprint
+X	Add LDO thermal pads/vias
+	Fix encoder component layout
+
+	
+-	Add MC4606 EN pin pullup (not required per datasheet)
+
+	TC amplifier location?
+	Increase MOSFET thermal pad size?
+
+
+

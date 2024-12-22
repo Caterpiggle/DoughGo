@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/Thomas/Dropbox/Proofer_Project/Code Rev2/Dough_Go.X/_build/Dough_Go/default",
+  "command": "c:\\PROGRA~1\\MICROC~1\\xc8\\v2.46\\bin\\xc8-cc.exe -mcpu=16F18344 -c -mdfp=C:/Users/Thomas/.mchp_packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8 -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -mwarn=-3 -Wa,-a -DXPRJ_default=default -msummary=-psect,-class,+mem,-hex,-file -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -moscval=0x3400 -mno-download -mno-stackcall -mno-default-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto -o CMakeFiles\\Dough_Go_default_compile.dir\\C_\\Users\\Thomas\\Dropbox\\Proofer_Project\\Code_Rev2\\Dough_Go.X\\main.c.p1 -c \"C:\\Users\\Thomas\\Dropbox\\Proofer_Project\\Code Rev2\\Dough_Go.X\\main.c\"",
+  "file": "C:\\Users\\Thomas\\Dropbox\\Proofer_Project\\Code Rev2\\Dough_Go.X\\main.c",
+  "output": "CMakeFiles\\Dough_Go_default_compile.dir\\C_\\Users\\Thomas\\Dropbox\\Proofer_Project\\Code_Rev2\\Dough_Go.X\\main.c.p1"
+}
+]

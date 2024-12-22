@@ -1,0 +1,306 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F18344 ]
+[d frameptr 6 ]
+"5 c:\PROGRA~1\MICROC~1\xc8\v2.46\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"5 c:\PROGRA~1\MICROC~1\xc8\v2.46\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"10 c:\PROGRA~1\MICROC~1\xc8\v2.46\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"15 c:\PROGRA~1\MICROC~1\xc8\v2.46\pic\sources\c99\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"4 c:\PROGRA~1\MICROC~1\xc8\v2.46\pic\sources\c99\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"4 c:\PROGRA~1\MICROC~1\xc8\v2.46\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 c:\PROGRA~1\MICROC~1\xc8\v2.46\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"107 C:\Users\Thomas\Dropbox\Proofer_Project\Code\Dough_Go.X\main.c
+[v _SPI_out SPI_out `(v  1 e 1 0 ]
+"114
+[v _SPI_read SPI_read `(uc  1 e 1 0 ]
+"133
+[v _upd_temp upd_temp `(v  1 e 1 0 ]
+"147
+[v _SPI_read_TC SPI_read_TC `(v  1 e 1 0 ]
+"182
+[v _upd_disp upd_disp `(v  1 e 1 0 ]
+"223
+[v _ISR ISR `II(v  1 e 1 0 ]
+"261
+[v _main main `(v  1 e 1 0 ]
+[s S103 . 1 `uc 1 INTEDG 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"364 C:/Users/Thomas/.mchp_packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc\pic16f18344.h
+[u S108 . 1 `S103 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES108  1 e 1 @11 ]
+"384
+[v _PORTA PORTA `VEuc  1 e 1 @12 ]
+[s S159 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+]
+"399
+[u S166 . 1 `S159 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES166  1 e 1 @12 ]
+"434
+[v _PORTB PORTB `VEuc  1 e 1 @13 ]
+[s S66 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"448
+[u S72 . 1 `S66 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES72  1 e 1 @13 ]
+"473
+[v _PORTC PORTC `VEuc  1 e 1 @14 ]
+[s S81 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"490
+[u S90 . 1 `S81 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES90  1 e 1 @14 ]
+[s S129 . 1 `uc 1 INTF 1 0 :1:0 
+`uc 1 . 1 0 :3:1 
+`uc 1 IOCIF 1 0 :1:4 
+`uc 1 TMR0IF 1 0 :1:5 
+]
+"548
+[u S134 . 1 `S129 1 . 1 0 ]
+[v _PIR0bits PIR0bits `VES134  1 e 1 @16 ]
+[s S44 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 BCL1IF 1 0 :1:2 
+`uc 1 SSP1IF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+"585
+[u S53 . 1 `S44 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES53  1 e 1 @17 ]
+"1197
+[v _T0CON0 T0CON0 `VEuc  1 e 1 @23 ]
+"1262
+[v _T0CON1 T0CON1 `VEuc  1 e 1 @24 ]
+[s S185 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+]
+"1654
+[u S192 . 1 `S185 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES192  1 e 1 @140 ]
+[s S202 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"1698
+[u S208 . 1 `S202 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES208  1 e 1 @141 ]
+[s S217 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"1740
+[u S226 . 1 `S217 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES226  1 e 1 @142 ]
+[s S116 . 1 `uc 1 INTE 1 0 :1:0 
+`uc 1 . 1 0 :3:1 
+`uc 1 IOCIE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+"1798
+[u S121 . 1 `S116 1 . 1 0 ]
+[v _PIE0bits PIE0bits `VES121  1 e 1 @144 ]
+"2371
+[v _LATA LATA `VEuc  1 e 1 @268 ]
+"2416
+[v _LATB LATB `VEuc  1 e 1 @269 ]
+"2455
+[v _LATC LATC `VEuc  1 e 1 @270 ]
+"3010
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"3055
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"3094
+[v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
+"3231
+[v _TX1REG TX1REG `VEuc  1 e 1 @410 ]
+"3292
+[v _SP1BRGL SP1BRGL `VEuc  1 e 1 @411 ]
+"3416
+[v _RC1STA RC1STA `VEuc  1 e 1 @413 ]
+"3596
+[v _TX1STA TX1STA `VEuc  1 e 1 @414 ]
+"3776
+[v _BAUD1CON BAUD1CON `VEuc  1 e 1 @415 ]
+"4173
+[v _SSP1BUF SSP1BUF `VEuc  1 e 1 @529 ]
+[s S23 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+"4957
+[u S32 . 1 `S23 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES32  1 e 1 @532 ]
+"5057
+[v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @533 ]
+[s S257 . 1 `uc 1 IOCAN0 1 0 :1:0 
+`uc 1 IOCAN1 1 0 :1:1 
+`uc 1 IOCAN2 1 0 :1:2 
+`uc 1 IOCAN3 1 0 :1:3 
+`uc 1 IOCAN4 1 0 :1:4 
+`uc 1 IOCAN5 1 0 :1:5 
+]
+"6799
+[u S264 . 1 `S257 1 . 1 0 ]
+[v _IOCANbits IOCANbits `VES264  1 e 1 @914 ]
+"6834
+[v _IOCAF IOCAF `VEuc  1 e 1 @915 ]
+[s S142 . 1 `uc 1 IOCAF0 1 0 :1:0 
+`uc 1 IOCAF1 1 0 :1:1 
+`uc 1 IOCAF2 1 0 :1:2 
+`uc 1 IOCAF3 1 0 :1:3 
+`uc 1 IOCAF4 1 0 :1:4 
+`uc 1 IOCAF5 1 0 :1:5 
+]
+"6849
+[u S149 . 1 `S142 1 . 1 0 ]
+[v _IOCAFbits IOCAFbits `VES149  1 e 1 @915 ]
+"11852
+[v _OSCCON1 OSCCON1 `VEuc  1 e 1 @2329 ]
+"12193
+[v _OSCFRQ OSCFRQ `VEuc  1 e 1 @2335 ]
+"12987
+[v _SSP1DATPPS SSP1DATPPS `VEuc  1 e 1 @3617 ]
+"13483
+[v _RA0PPS RA0PPS `VEuc  1 e 1 @3728 ]
+"14159
+[v _RC4PPS RC4PPS `VEuc  1 e 1 @3748 ]
+"14263
+[v _RC6PPS RC6PPS `VEuc  1 e 1 @3750 ]
+"83 C:\Users\Thomas\Dropbox\Proofer_Project\Code\Dough_Go.X\main.c
+[v _T_cur T_cur `uc  1 e 1 0 ]
+"84
+[v _T_set T_set `uc  1 e 1 0 ]
+"86
+[v _T_cur_tens T_cur_tens `uc  1 e 1 0 ]
+"87
+[v _T_cur_ones T_cur_ones `uc  1 e 1 0 ]
+"88
+[v _T_set_tens T_set_tens `uc  1 e 1 0 ]
+"89
+[v _T_set_ones T_set_ones `uc  1 e 1 0 ]
+"92
+[v _err_prev err_prev `uc  1 e 1 0 ]
+"97
+[v _TC_count TC_count `uc  1 e 1 0 ]
+"99
+[v _disp_dig disp_dig `[4]uc  1 e 4 0 ]
+"100
+[v _disp_num disp_num `uc  1 e 1 0 ]
+"104
+[v _disp_T disp_T `[4]uc  1 e 4 0 ]
+"261
+[v _main main `(v  1 e 1 0 ]
+{
+"379
+} 0
+"223
+[v _ISR ISR `II(v  1 e 1 0 ]
+{
+"259
+} 0
+"182
+[v _upd_disp upd_disp `(v  1 e 1 0 ]
+{
+"209
+} 0
+"133
+[v _upd_temp upd_temp `(v  1 e 1 0 ]
+{
+"145
+} 0
+"5 c:\PROGRA~1\MICROC~1\xc8\v2.46\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 6 ]
+[v ___awmod@counter counter `uc  1 a 1 5 ]
+"5
+[v ___awmod@divisor divisor `i  1 p 2 0 ]
+[v ___awmod@dividend dividend `i  1 p 2 2 ]
+"34
+} 0
+"5 c:\PROGRA~1\MICROC~1\xc8\v2.46\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"41
+} 0
+"147 C:\Users\Thomas\Dropbox\Proofer_Project\Code\Dough_Go.X\main.c
+[v _SPI_read_TC SPI_read_TC `(v  1 e 1 0 ]
+{
+"149
+[v SPI_read_TC@TC_MB TC_MB `uc  1 a 1 2 ]
+"167
+} 0
+"114
+[v _SPI_read SPI_read `(uc  1 e 1 0 ]
+{
+[v SPI_read@addr addr `uc  1 a 1 wreg ]
+[v SPI_read@addr addr `uc  1 a 1 wreg ]
+"116
+[v SPI_read@addr addr `uc  1 a 1 1 ]
+"121
+} 0
+"107
+[v _SPI_out SPI_out `(v  1 e 1 0 ]
+{
+[v SPI_out@dat dat `uc  1 a 1 wreg ]
+[v SPI_out@dat dat `uc  1 a 1 wreg ]
+"109
+[v SPI_out@dat dat `uc  1 a 1 0 ]
+"112
+} 0
