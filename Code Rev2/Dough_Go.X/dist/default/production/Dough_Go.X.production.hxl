@@ -1,26 +1,26 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- C:\Users\Thomas\AppData\Local\Temp\xcAspp4.\driver_tmp_3.o
+ C:\Users\Thomas\AppData\Local\Temp\xcBs7qs.1\driver_tmp_3.o
  -Odist/default/production\Dough_Go.X.production.hex
  -logfile=dist/default/production\Dough_Go.X.production.hxl
  -addressing=2
 
 ### Memory Usage ###
  Input file ranges:
-  0h - 3h		(C:\Users\Thomas\AppData\Local\Temp\xcAspp4.\driver_tmp_3.o)
-  8h - FFBh		(C:\Users\Thomas\AppData\Local\Temp\xcAspp4.\driver_tmp_3.o)
-  12BCh - 1FFFh		(C:\Users\Thomas\AppData\Local\Temp\xcAspp4.\driver_tmp_3.o)
-  1000Eh - 10015h		(C:\Users\Thomas\AppData\Local\Temp\xcAspp4.\driver_tmp_3.o)
+  0h - 3h		(C:\Users\Thomas\AppData\Local\Temp\xcBs7qs.1\driver_tmp_3.o)
+  8h - FFFh		(C:\Users\Thomas\AppData\Local\Temp\xcBs7qs.1\driver_tmp_3.o)
+  136Ch - 1FFFh		(C:\Users\Thomas\AppData\Local\Temp\xcBs7qs.1\driver_tmp_3.o)
+  1000Eh - 10015h		(C:\Users\Thomas\AppData\Local\Temp\xcBs7qs.1\driver_tmp_3.o)
  Unused ranges:
   4h - 7h
-  FFCh - 12BBh
+  1000h - 136Bh
   2000h - 1000Dh
 
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Input file             (C:\Users\Thomas\AppData\Local\Temp\xcAspp4.\driver_tmp_3.o)
+  H1 = Input file             (C:\Users\Thomas\AppData\Local\Temp\xcBs7qs.1\driver_tmp_3.o)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------
@@ -279,20 +279,9 @@
 00000FC0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000FD0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000FE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00000FF0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- --
+00000FF0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 ----------------------------------------------------------
-000012B0 | -- -- -- -- -- -- -- -- -- -- -- -- H1 H1 H1 H1
-000012C0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-000012D0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-000012E0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-000012F0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001300 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001310 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001320 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001330 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001340 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001350 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001360 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001360 | -- -- -- -- -- -- -- -- -- -- -- -- H1 H1 H1 H1
 00001370 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001380 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001390 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1

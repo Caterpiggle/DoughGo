@@ -11413,8 +11413,8 @@ uint8_t buff_full = 0;
 
 uint8_t SP_crossed = 0;
 
-uint16_t cur_PWM;
-uint16_t PWM_max;
+float cur_PWM;
+float PWM_max;
 
 float cur_temp;
 
@@ -11427,7 +11427,7 @@ uint8_t temp_div = 0;
 uint8_t mode;
 
 float cum_err = 0;
-float cum_err_max = 5;
+float cum_err_max = 20;
 float prev_err = 0;
 
 struct {
@@ -11519,20 +11519,8 @@ void set_PWM(uint16_t PWM) {
 }
 
 void upd_PWM(void) {
-    float err = 24 - cur_temp;
-
-    if (!SP_crossed) {
-        if (mode && !err) {
-            SP_crossed = 1;
-            cum_err = 0;
-        }
-
-        if (!mode && err) {
-            SP_crossed = 1;
-            cum_err = 0;
-        }
-    }
-
+    float err = 15 - cur_temp;
+# 194 "main.c"
     if (!mode) {
         err *= -1;
     }
@@ -11543,10 +11531,10 @@ void upd_PWM(void) {
         cum_err = cum_err_max;
     }
 
-    if ((cur_PWM + 0.4*err + 0.025*cum_err) < 0) {
+    if (((float)cur_PWM + 0.4*err + 0.4*cum_err) < 0) {
         cur_PWM = 0;
     } else {
-        cur_PWM += 0.4*err + 0.025*cum_err;
+        cur_PWM += 0.4*err + 0.4*cum_err;
     }
 
     if (cur_PWM > PWM_max) {
@@ -11706,7 +11694,7 @@ void main(void) {
 
         mode = 1;
 
-        PWM_max = 511;
+        PWM_max = 256;
     }
 
     while (1) {

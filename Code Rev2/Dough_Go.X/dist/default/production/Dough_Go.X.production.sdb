@@ -7,8 +7,6 @@
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 "5 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
-"4 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\fleq.c
-[v ___fleq __fleq `(b  1 e 0 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\flge.c
 [v ___flge __flge `(b  1 e 0 0 ]
 "43 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\fltol.c
@@ -346,12 +344,10 @@
 [v _buff_index buff_index `uc  1 e 1 0 ]
 "70
 [v _buff_full buff_full `uc  1 e 1 0 ]
-"72
-[v _SP_crossed SP_crossed `uc  1 e 1 0 ]
 "74
-[v _cur_PWM cur_PWM `us  1 e 2 0 ]
+[v _cur_PWM cur_PWM `f  1 e 4 0 ]
 "75
-[v _PWM_max PWM_max `us  1 e 2 0 ]
+[v _PWM_max PWM_max `f  1 e 4 0 ]
 "77
 [v _cur_temp cur_temp `f  1 e 4 0 ]
 "79
@@ -379,33 +375,43 @@
 [v _upd_disp upd_disp `(v  1 e 1 0 ]
 {
 "144
-[v upd_disp@TEMPF TEMPF `f  1 a 4 29 ]
+[v upd_disp@TEMPF TEMPF `f  1 a 4 4 ]
 "142
-[v upd_disp@dat dat `f  1 p 4 23 ]
+[v upd_disp@dat dat `f  1 p 4 0 ]
 "148
+} 0
+"43 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+{
+"45
+[v ___fltol@exp1 exp1 `uc  1 a 1 1 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 0 ]
+"43
+[v ___fltol@f1 f1 `d  1 p 4 2 ]
+"70
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
 {
 "10
-[v ___awmod@sign sign `uc  1 a 1 22 ]
-[v ___awmod@counter counter `uc  1 a 1 21 ]
+[v ___awmod@sign sign `uc  1 a 1 17 ]
+[v ___awmod@counter counter `uc  1 a 1 16 ]
 "5
-[v ___awmod@divisor divisor `i  1 p 2 16 ]
-[v ___awmod@dividend dividend `i  1 p 2 18 ]
+[v ___awmod@divisor divisor `i  1 p 2 11 ]
+[v ___awmod@dividend dividend `i  1 p 2 13 ]
 "34
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "10
-[v ___awdiv@quotient quotient `i  1 a 2 14 ]
+[v ___awdiv@quotient quotient `i  1 a 2 9 ]
 "11
-[v ___awdiv@sign sign `uc  1 a 1 13 ]
-[v ___awdiv@counter counter `uc  1 a 1 12 ]
+[v ___awdiv@sign sign `uc  1 a 1 8 ]
+[v ___awdiv@counter counter `uc  1 a 1 7 ]
 "5
-[v ___awdiv@divisor divisor `i  1 p 2 8 ]
-[v ___awdiv@dividend dividend `i  1 p 2 10 ]
+[v ___awdiv@divisor divisor `i  1 p 2 2 ]
+[v ___awdiv@dividend dividend `i  1 p 2 4 ]
 "41
 } 0
 "179 C:\Users\Thomas\NAS_Files\Proofer_Project\Code Rev2\Dough_Go.X\main.c
@@ -414,16 +420,6 @@
 "180
 [v upd_PWM@err err `f  1 a 4 16 ]
 "215
-} 0
-"43 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\fltol.c
-[v ___fltol __fltol `(l  1 e 4 0 ]
-{
-"45
-[v ___fltol@exp1 exp1 `uc  1 a 1 78 ]
-[v ___fltol@sign1 sign1 `uc  1 a 1 77 ]
-"43
-[v ___fltol@f1 f1 `d  1 p 4 0 ]
-"70
 } 0
 "242 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\sprcadd.c
 [v ___flsub __flsub `(d  1 e 4 0 ]
@@ -477,13 +473,6 @@
 [v ___flge@ff1 ff1 `d  1 p 4 0 ]
 [v ___flge@ff2 ff2 `d  1 p 4 4 ]
 "19
-} 0
-"4 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\fleq.c
-[v ___fleq __fleq `(b  1 e 0 0 ]
-{
-[v ___fleq@ff1 ff1 `d  1 p 4 2 ]
-[v ___fleq@ff2 ff2 `d  1 p 4 6 ]
-"12
 } 0
 "174 C:\Users\Thomas\NAS_Files\Proofer_Project\Code Rev2\Dough_Go.X\main.c
 [v _set_PWM set_PWM `(v  1 e 1 0 ]

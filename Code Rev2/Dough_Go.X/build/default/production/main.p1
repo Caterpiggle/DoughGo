@@ -1410,11 +1410,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 "74
-[; ;main.c: 74: uint16_t cur_PWM;
-[v _cur_PWM `us ~T0 @X0 1 e ]
+[; ;main.c: 74: float cur_PWM;
+[v _cur_PWM `f ~T0 @X0 1 e ]
 "75
-[; ;main.c: 75: uint16_t PWM_max;
-[v _PWM_max `us ~T0 @X0 1 e ]
+[; ;main.c: 75: float PWM_max;
+[v _PWM_max `f ~T0 @X0 1 e ]
 "77
 [; ;main.c: 77: float cur_temp;
 [v _cur_temp `f ~T0 @X0 1 e ]
@@ -1452,10 +1452,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `f
 ]
 "88
-[; ;main.c: 88: float cum_err_max = 5;
+[; ;main.c: 88: float cum_err_max = 20;
 [v _cum_err_max `f ~T0 @X0 1 e ]
 [i _cum_err_max
--> -> 5 `i `f
+-> -> 20 `i `f
 ]
 "89
 [; ;main.c: 89: float prev_err = 0;
@@ -1719,48 +1719,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _upd_PWM ]
 [f ]
 "180
-[; ;main.c: 180:     float err = 24 - cur_temp;
+[; ;main.c: 180:     float err = 15 - cur_temp;
 [v _err `f ~T0 @X0 1 a ]
-[e = _err - -> -> 24 `i `f _cur_temp ]
-"182
-[; ;main.c: 182:     if (!SP_crossed) {
-[e $ ! ! != -> _SP_crossed `i -> 0 `i 953  ]
-{
-"183
-[; ;main.c: 183:         if (mode && !err) {
-[e $ ! && != -> _mode `i -> 0 `i ! != _err -> -> 0 `i `f 954  ]
-{
-"184
-[; ;main.c: 184:             SP_crossed = 1;
-[e = _SP_crossed -> -> 1 `i `uc ]
-"185
-[; ;main.c: 185:             cum_err = 0;
-[e = _cum_err -> -> 0 `i `f ]
-"186
-[; ;main.c: 186:         }
-}
-[e :U 954 ]
-"188
-[; ;main.c: 188:         if (!mode && err) {
-[e $ ! && ! != -> _mode `i -> 0 `i != _err -> -> 0 `i `f 955  ]
-{
-"189
-[; ;main.c: 189:             SP_crossed = 1;
-[e = _SP_crossed -> -> 1 `i `uc ]
-"190
-[; ;main.c: 190:             cum_err = 0;
-[e = _cum_err -> -> 0 `i `f ]
-"191
-[; ;main.c: 191:         }
-}
-[e :U 955 ]
-"192
-[; ;main.c: 192:     }
-}
-[e :U 953 ]
+[e = _err - -> -> 15 `i `f _cur_temp ]
 "194
 [; ;main.c: 194:     if (!mode) {
-[e $ ! ! != -> _mode `i -> 0 `i 956  ]
+[e $ ! ! != -> _mode `i -> 0 `i 953  ]
 {
 "195
 [; ;main.c: 195:         err *= -1;
@@ -1768,13 +1732,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "196
 [; ;main.c: 196:     }
 }
-[e :U 956 ]
+[e :U 953 ]
 "198
 [; ;main.c: 198:     cum_err += 0.13*(prev_err + err)/2;
 [e =+ _cum_err -> / * .0.13 -> + _prev_err _err `d -> -> 2 `i `d `f ]
 "200
 [; ;main.c: 200:     if (cum_err > cum_err_max) {
-[e $ ! > _cum_err _cum_err_max 957  ]
+[e $ ! > _cum_err _cum_err_max 954  ]
 {
 "201
 [; ;main.c: 201:         cum_err = cum_err_max;
@@ -1782,30 +1746,30 @@ Version 4.0 HI-TECH Software Intermediate Code
 "202
 [; ;main.c: 202:     }
 }
-[e :U 957 ]
+[e :U 954 ]
 "204
-[; ;main.c: 204:     if ((cur_PWM + 0.4*err + 0.025*cum_err) < 0) {
-[e $ ! < + + -> -> _cur_PWM `ui `d * .0.4 -> _err `d * .0.025 -> _cum_err `d -> -> 0 `i `d 958  ]
+[; ;main.c: 204:     if (((float)cur_PWM + 0.4*err + 0.4*cum_err) < 0) {
+[e $ ! < + + -> _cur_PWM `d * .0.4 -> _err `d * .0.4 -> _cum_err `d -> -> 0 `i `d 955  ]
 {
 "205
 [; ;main.c: 205:         cur_PWM = 0;
-[e = _cur_PWM -> -> 0 `i `us ]
+[e = _cur_PWM -> -> 0 `i `f ]
 "206
 [; ;main.c: 206:     } else {
 }
-[e $U 959  ]
-[e :U 958 ]
+[e $U 956  ]
+[e :U 955 ]
 {
 "207
-[; ;main.c: 207:         cur_PWM += 0.4*err + 0.025*cum_err;
-[e =+ _cur_PWM + * .0.4 -> _err `d * .0.025 -> _cum_err `d ]
+[; ;main.c: 207:         cur_PWM += 0.4*err + 0.4*cum_err;
+[e =+ _cur_PWM -> + * .0.4 -> _err `d * .0.4 -> _cum_err `d `f ]
 "208
 [; ;main.c: 208:     }
 }
-[e :U 959 ]
+[e :U 956 ]
 "210
 [; ;main.c: 210:     if (cur_PWM > PWM_max) {
-[e $ ! > -> _cur_PWM `ui -> _PWM_max `ui 960  ]
+[e $ ! > _cur_PWM _PWM_max 957  ]
 {
 "211
 [; ;main.c: 211:         cur_PWM = PWM_max;
@@ -1813,7 +1777,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "212
 [; ;main.c: 212:     }
 }
-[e :U 960 ]
+[e :U 957 ]
 "214
 [; ;main.c: 214:     prev_err = err;
 [e = _prev_err _err ]
@@ -1830,7 +1794,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "220
 [; ;main.c: 220:     if (PIE0bits.TMR0IE && PIR0bits.TMR0IF) {
-[e $ ! && != -> . . _PIE0bits 0 3 `i -> 0 `i != -> . . _PIR0bits 0 3 `i -> 0 `i 962  ]
+[e $ ! && != -> . . _PIE0bits 0 3 `i -> 0 `i != -> . . _PIR0bits 0 3 `i -> 0 `i 959  ]
 {
 "221
 [; ;main.c: 221:         flags.TC_read = 1;
@@ -1841,10 +1805,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "223
 [; ;main.c: 223:     }
 }
-[e :U 962 ]
+[e :U 959 ]
 "226
 [; ;main.c: 226:     if (PIE2bits.TMR4IE && PIR2bits.TMR4IF) {
-[e $ ! && != -> . . _PIE2bits 0 1 `i -> 0 `i != -> . . _PIR2bits 0 1 `i -> 0 `i 963  ]
+[e $ ! && != -> . . _PIE2bits 0 1 `i -> 0 `i != -> . . _PIR2bits 0 1 `i -> 0 `i 960  ]
 {
 "227
 [; ;main.c: 227:         ref_disp();
@@ -1855,10 +1819,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "229
 [; ;main.c: 229:     }
 }
-[e :U 963 ]
+[e :U 960 ]
 "230
 [; ;main.c: 230: }
-[e :UE 961 ]
+[e :UE 958 ]
 }
 "232
 [; ;main.c: 232: void init(void) {
@@ -1982,11 +1946,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
 "292
 [; ;main.c: 292:     while(!PIR1bits.TMR2IF);
-[e $U 965  ]
-[e :U 966 ]
-[e :U 965 ]
-[e $ ! != -> . . _PIR1bits 0 1 `i -> 0 `i 966  ]
-[e :U 967 ]
+[e $U 962  ]
+[e :U 963 ]
+[e :U 962 ]
+[e $ ! != -> . . _PIR1bits 0 1 `i -> 0 `i 963  ]
+[e :U 964 ]
 "293
 [; ;main.c: 293:     PIR1bits.TMR2IF = 0;
 [e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
@@ -2067,7 +2031,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
 "333
 [; ;main.c: 333: }
-[e :UE 964 ]
+[e :UE 961 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
 "335
@@ -2084,12 +2048,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _set_PWM (1 -> -> 0 `i `us ]
 "341
 [; ;main.c: 341:     while(!buff_full) {
-[e $U 969  ]
-[e :U 970 ]
+[e $U 966  ]
+[e :U 967 ]
 {
 "342
 [; ;main.c: 342:         if (flags.TC_read) {
-[e $ ! != -> . _flags 0 `i -> 0 `i 972  ]
+[e $ ! != -> . _flags 0 `i -> 0 `i 969  ]
 {
 "343
 [; ;main.c: 343:             buff_put(read_TC());
@@ -2100,15 +2064,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "345
 [; ;main.c: 345:         }
 }
-[e :U 972 ]
+[e :U 969 ]
 "346
 [; ;main.c: 346:     }
 }
-[e :U 969 ]
+[e :U 966 ]
 "341
 [; ;main.c: 341:     while(!buff_full) {
-[e $ ! != -> _buff_full `i -> 0 `i 970  ]
-[e :U 971 ]
+[e $ ! != -> _buff_full `i -> 0 `i 967  ]
+[e :U 968 ]
 "348
 [; ;main.c: 348:     cur_temp = get_avg_temp();
 [e = _cur_temp ( _get_avg_temp ..  ]
@@ -2117,7 +2081,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _upd_disp (1 _cur_temp ]
 "352
 [; ;main.c: 352:     if (cur_temp >= 24) {
-[e $ ! >= _cur_temp -> -> 24 `i `f 973  ]
+[e $ ! >= _cur_temp -> -> 24 `i `f 970  ]
 {
 "353
 [; ;main.c: 353:         LATCbits.LATC3 = 1;
@@ -2133,12 +2097,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _mode -> -> 0 `i `uc ]
 "359
 [; ;main.c: 359:         PWM_max = 1023;
-[e = _PWM_max -> -> 1023 `i `us ]
+[e = _PWM_max -> -> 1023 `i `f ]
 "360
 [; ;main.c: 360:     } else {
 }
-[e $U 974  ]
-[e :U 973 ]
+[e $U 971  ]
+[e :U 970 ]
 {
 "361
 [; ;main.c: 361:         LATCbits.LATC3 = 0;
@@ -2153,19 +2117,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 365:         mode = 1;
 [e = _mode -> -> 1 `i `uc ]
 "367
-[; ;main.c: 367:         PWM_max = 511;
-[e = _PWM_max -> -> 511 `i `us ]
+[; ;main.c: 367:         PWM_max = 256;
+[e = _PWM_max -> -> 256 `i `f ]
 "368
 [; ;main.c: 368:     }
 }
-[e :U 974 ]
+[e :U 971 ]
 "370
 [; ;main.c: 370:     while (1) {
-[e :U 976 ]
+[e :U 973 ]
 {
 "372
 [; ;main.c: 372:         if (flags.TC_read) {
-[e $ ! != -> . _flags 0 `i -> 0 `i 978  ]
+[e $ ! != -> . _flags 0 `i -> 0 `i 975  ]
 {
 "373
 [; ;main.c: 373:             buff_put(read_TC());
@@ -2184,18 +2148,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _upd_PWM ..  ]
 "381
 [; ;main.c: 381:             set_PWM(cur_PWM);
-[e ( _set_PWM (1 _cur_PWM ]
+[e ( _set_PWM (1 -> _cur_PWM `us ]
 "382
 [; ;main.c: 382:         }
 }
-[e :U 978 ]
+[e :U 975 ]
 "383
 [; ;main.c: 383:     }
 }
-[e :U 975 ]
-[e $U 976  ]
-[e :U 977 ]
+[e :U 972 ]
+[e $U 973  ]
+[e :U 974 ]
 "384
 [; ;main.c: 384: }
-[e :UE 968 ]
+[e :UE 965 ]
 }

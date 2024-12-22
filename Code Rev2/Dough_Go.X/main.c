@@ -57,9 +57,9 @@
 #define IN_B  LATBbits.LATB7 // TEC driver IN_B logic input
 #define SEL_0 LATCbits.LATC6 // TEC driver SEL_0 logic input
 
-#define TSET   24 // Set temp 24C = 75F
+#define TSET   15 // Set temp 24C = 75F
 #define K_p   0.4 // PID controller constants
-#define K_i 0.025
+#define K_i   0.4
 #define dt   0.13 // dt val (s) based on TC read rate (7.65Hz)
 
 #define N_buff 20 // Size of circular temperature data buffer
@@ -71,8 +71,8 @@ uint8_t buff_full = 0;
 
 uint8_t SP_crossed = 0; // Setpoint crossing detection for integrator windup
 
-uint16_t cur_PWM; // PWM value storage
-uint16_t PWM_max; // PWM value limit
+float cur_PWM; // PWM value storage
+float PWM_max; // PWM value limit
 
 float cur_temp;
 
@@ -85,7 +85,7 @@ uint8_t temp_div = 0;
 uint8_t mode;
 
 float cum_err = 0; // Cumulative (integral) error
-float cum_err_max = 5;
+float cum_err_max = 20;
 float prev_err = 0; // Previous error calculation storage
 
 struct {
@@ -179,17 +179,17 @@ void set_PWM(uint16_t PWM) {
 void upd_PWM(void) {
     float err = TSET - cur_temp; // Calculate error from set temp
     
-    if (!SP_crossed) { // Setpoint crossing detection
-        if (mode && !err) { // Heating mode, crossing TSET
-            SP_crossed = 1;
-            cum_err = 0;
-        }
-        
-        if (!mode && err) { // Cooling mode, crossing TSET
-            SP_crossed = 1;
-            cum_err = 0;
-        }
-    }
+//    if (!SP_crossed) { // Setpoint crossing detection
+//        if (mode && !err) { // Heating mode, crossing TSET
+//            SP_crossed = 1;
+//            cum_err = 0;
+//        }
+//        
+//        if (!mode && err) { // Cooling mode, crossing TSET
+//            SP_crossed = 1;
+//            cum_err = 0;
+//        }
+//    }
     
     if (!mode) { // Flip sign for cooling mode
         err *= -1;
@@ -201,11 +201,13 @@ void upd_PWM(void) {
         cum_err = cum_err_max;
     }
     
-    cur_PWM += K_p*err + K_i*cum_err;
-    if (cur_PWM < 0) {
+    if (((float)cur_PWM + K_p*err + K_i*cum_err) < 0) { // Fix this to not need double calculation
         cur_PWM = 0;
-    } 
-    else if (cur_PWM > PWM_max) {
+    } else {
+        cur_PWM += K_p*err + K_i*cum_err; // Set new PWM
+    }
+    
+    if (cur_PWM > PWM_max) {
         cur_PWM = PWM_max;
     }
     
@@ -362,7 +364,7 @@ void main(void) {
         
         mode = 1;
         
-        PWM_max = 511; // 50% DC
+        PWM_max = 256; // 25% DC
     }
     
     while (1) {

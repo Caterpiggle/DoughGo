@@ -1,0 +1,14 @@
+main.i
+main.p1
+*.cmf
+*.elf
+*.hex
+*.hxl
+*.lst
+*.map
+*.mum
+*.o
+*.rlf
+*.sdb
+*.sym
+memoryfile.xml
