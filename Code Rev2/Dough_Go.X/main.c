@@ -201,7 +201,7 @@ void upd_PWM(void) {
         cum_err = cum_err_max;
     }
     
-    if (((float)cur_PWM + K_p*err + K_i*cum_err) < 0) { // Fix this to not need double calculation
+    if ((cur_PWM + K_p*err + K_i*cum_err) < 0) { // Fix this to not need double calculation
         cur_PWM = 0;
     } else {
         cur_PWM += K_p*err + K_i*cum_err; // Set new PWM
@@ -349,7 +349,7 @@ void main(void) {
     
     upd_disp(cur_temp); // Output average initial temp reading
     
-    if (cur_temp >= 24) { // Set to cooling mode
+    if (cur_temp >= TSET) { // Set to cooling mode
         IN_A  = 1;
         IN_B  = 0;
         SEL_0 = 0;
