@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.46 build 20240104201356 
-                                                                                               Sun Dec 22 15:04:19 2024
+                                                                                               Sun Dec 22 19:39:30 2024
 
 Microchip MPLAB XC8 C Compiler v2.46 (Free license) build 20240104201356 Og1 
      1                           	processor	16F18344
@@ -1420,7 +1420,7 @@ Microchip MPLAB XC8 C Compiler v2.46 (Free license) build 20240104201356 Og1
   1406     071F  318C  2459  3186   	fcall	_upd_disp
   1407     0722                     l2935:
   1408                           
-  1409                           ;main.c: 352:     if (cur_temp >= 24) {
+  1409                           ;main.c: 352:     if (cur_temp >= 15) {
   1410     0722  0021               	movlb	1	; select bank1
   1411     0723  082B               	movf	(_cur_temp+3)^(0+128),w
   1412     0724  00BC               	movwf	(___flge@ff1+3)^(0+128)
@@ -1432,7 +1432,7 @@ Microchip MPLAB XC8 C Compiler v2.46 (Free license) build 20240104201356 Og1
   1418     072A  00B9               	movwf	___flge@ff1^(0+128)
   1419     072B  3041               	movlw	65
   1420     072C  00C0               	movwf	(___flge@ff2+3)^(0+128)
-  1421     072D  30C0               	movlw	192
+  1421     072D  3070               	movlw	112
   1422     072E  00BF               	movwf	(___flge@ff2+2)^(0+128)
   1423     072F  3000               	movlw	0
   1424     0730  00BE               	movwf	(___flge@ff2+1)^(0+128)
@@ -2612,7 +2612,7 @@ Microchip MPLAB XC8 C Compiler v2.46 (Free license) build 20240104201356 Og1
   2598     0147  00A4               	movwf	_cum_err^(0+128)
   2599     0148                     l2913:
   2600                           
-  2601                           ;main.c: 204:     if (((float)cur_PWM + 0.4*err + 0.4*cum_err) < 0) {
+  2601                           ;main.c: 204:     if ((cur_PWM + 0.4*err + 0.4*cum_err) < 0) {
   2602     0148  0021               	movlb	1	; select bank1
   2603     0149  0833               	movf	(_cur_PWM+3)^(0+128),w
   2604     014A  0020               	movlb	0	; select bank0
@@ -2682,7 +2682,7 @@ Microchip MPLAB XC8 C Compiler v2.46 (Free license) build 20240104201356 Og1
   2668     018E  00C5               	movwf	_upd_PWM$1280^(0+128)
   2669     018F                     l2915:
   2670                           
-  2671                           ;main.c: 204:     if (((float)cur_PWM + 0.4*err + 0.4*cum_err) < 0) {
+  2671                           ;main.c: 204:     if ((cur_PWM + 0.4*err + 0.4*cum_err) < 0) {
   2672     018F  303E               	movlw	62
   2673     0190  0020               	movlb	0	; select bank0
   2674     0191  00A8               	movwf	___flmul@b+3
@@ -7262,7 +7262,7 @@ SFR31                0      0       0      32        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.46 build 20240104201356 
-Symbol Table                                                                                   Sun Dec 22 15:04:19 2024
+Symbol Table                                                                                   Sun Dec 22 19:39:30 2024
 
            ___fldiv@aexp 0058             ___fldiv@bexp 0057             ___fldiv@sign 0050  
            ___awdiv@sign 0028      __Umul8_16@word_mpld 0022                      l123 09BE  

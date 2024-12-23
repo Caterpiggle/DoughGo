@@ -1748,7 +1748,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 954 ]
 "204
-[; ;main.c: 204:     if (((float)cur_PWM + 0.4*err + 0.4*cum_err) < 0) {
+[; ;main.c: 204:     if ((cur_PWM + 0.4*err + 0.4*cum_err) < 0) {
 [e $ ! < + + -> _cur_PWM `d * .0.4 -> _err `d * .0.4 -> _cum_err `d -> -> 0 `i `d 955  ]
 {
 "205
@@ -2080,8 +2080,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 350:     upd_disp(cur_temp);
 [e ( _upd_disp (1 _cur_temp ]
 "352
-[; ;main.c: 352:     if (cur_temp >= 24) {
-[e $ ! >= _cur_temp -> -> 24 `i `f 970  ]
+[; ;main.c: 352:     if (cur_temp >= 15) {
+[e $ ! >= _cur_temp -> -> 15 `i `f 970  ]
 {
 "353
 [; ;main.c: 353:         LATCbits.LATC3 = 1;

@@ -114,7 +114,7 @@ void char_print(uint8_t dat) {
     TX1REG = dat;          // Move data to TX1REG
 }
 
-//
+// Enter data in buffer
 void buff_put(uint16_t dat) {
     temp_buffer[buff_index] = dat;
     buff_index++;
@@ -139,6 +139,7 @@ void ref_disp(void) {
     flags.disp_dig ^= 1;
 }
 
+// Update display
 void upd_disp(float dat) {
     //float TEMPC = (float)dat/16;    // Convert to degC (/16)
     float TEMPF = ((float)dat*9/5) + 32; // Convert to degF
@@ -160,6 +161,7 @@ uint16_t read_TC(void) {
     return DAT_BUFFER;
 }
 
+// Get average temperature
 float get_avg_temp(void) {
     float sum = 0;
     
@@ -171,14 +173,17 @@ float get_avg_temp(void) {
     return sum/N_buff/16;
 }
 
+// Set PWM
 void set_PWM(uint16_t PWM) {
     PWM5DCL = PWM & 0xFFFC;
     PWM5DCH = PWM>>2;
 }
 
+// Update PWM
 void upd_PWM(void) {
     float err = TSET - cur_temp; // Calculate error from set temp
     
+    // Removed integral windup for testing
 //    if (!SP_crossed) { // Setpoint crossing detection
 //        if (mode && !err) { // Heating mode, crossing TSET
 //            SP_crossed = 1;
@@ -201,16 +206,14 @@ void upd_PWM(void) {
         cum_err = cum_err_max;
     }
     
-    if ((cur_PWM + K_p*err + K_i*cum_err) < 0) { // Fix this to not need double calculation
+    // Set new PWM
+    cur_PWM += K_p*err + K_i*cum_err;
+    if (cur_PWM < 0) {
         cur_PWM = 0;
-    } else {
-        cur_PWM += K_p*err + K_i*cum_err; // Set new PWM
-    }
-    
-    if (cur_PWM > PWM_max) {
+    } else if (cur_PWM > PWM_max) {
         cur_PWM = PWM_max;
     }
-    
+
     prev_err = err;
 }
 

@@ -11531,7 +11531,7 @@ void upd_PWM(void) {
         cum_err = cum_err_max;
     }
 
-    if (((float)cur_PWM + 0.4*err + 0.4*cum_err) < 0) {
+    if ((cur_PWM + 0.4*err + 0.4*cum_err) < 0) {
         cur_PWM = 0;
     } else {
         cur_PWM += 0.4*err + 0.4*cum_err;
@@ -11679,7 +11679,7 @@ void main(void) {
 
     upd_disp(cur_temp);
 
-    if (cur_temp >= 24) {
+    if (cur_temp >= 15) {
         LATCbits.LATC3 = 1;
         LATBbits.LATB7 = 0;
         LATCbits.LATC6 = 0;
