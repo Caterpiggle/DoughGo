@@ -22,7 +22,7 @@
 
 #include <xc.h>
 #include <stdint.h>
-#include <math.h>
+
 
 // CONFIG1
 #pragma config FEXTOSC  = OFF     // FEXTOSC External Oscillator mode Selection bits (Oscillator not enabled)
@@ -57,10 +57,10 @@
 #define IN_B  LATBbits.LATB7 // TEC driver IN_B logic input
 #define SEL_0 LATCbits.LATC6 // TEC driver SEL_0 logic input
 
-#define TSET   15 // Set temp 24C = 75F
-#define K_p   0.4 // PID controller constants
-#define K_i   0.4
-#define dt   0.13 // dt val (s) based on TC read rate (7.65Hz)
+#define TSET    24 // Set temp 24C = 75F
+#define K_p   0.05 // PID controller constants
+#define K_i      0
+#define dt    0.13 // dt val (s) based on TC read rate (7.65Hz)
 
 #define N_buff 20 // Size of circular temperature data buffer
 
@@ -84,9 +84,9 @@ uint8_t temp_div = 0;
 
 uint8_t mode;
 
-float cum_err = 0; // Cumulative (integral) error
-float cum_err_max = 20;
-float prev_err = 0; // Previous error calculation storage
+float cum_err     = 0; // Cumulative (integral) error
+float cum_err_max = 2; // Max cumulative error to limit windup
+float prev_err    = 0; // Previous error calculation storage
 
 struct {
     unsigned int TC_read  : 1; // Interrupt flag for TC read
@@ -183,7 +183,6 @@ void set_PWM(uint16_t PWM) {
 void upd_PWM(void) {
     float err = TSET - cur_temp; // Calculate error from set temp
     
-    // Removed integral windup for testing
 //    if (!SP_crossed) { // Setpoint crossing detection
 //        if (mode && !err) { // Heating mode, crossing TSET
 //            SP_crossed = 1;
@@ -367,7 +366,7 @@ void main(void) {
         
         mode = 1;
         
-        PWM_max = 256; // 25% DC
+        PWM_max = 205; // 20% DC
     }
     
     while (1) {
